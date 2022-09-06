@@ -1,45 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>task list</title>
-    <link rel="stylesheet" href="main.css"/>
-</head>
-<body>
-    <header>
-        <h1> TODO LIST</h1>
-        <form id="now-task-form">
-            <input
-              type="text"
-              id="new-task-input"
-              placeholder="what do you have planned?"/>
-              <input
-              type="submit"
-              id="new-task-submit"
-              value="add task"/>
-        </form>
-    </header>
-    <main>
-    <section class="task-list">
-        <h2>task</h2>
-        <div id="task">
-            <!--div class="content">   
-                <input 
-                    type=" text" 
-                    class="text"
-                    value="MY task"
-                    readonly
-                    />   
-            </div>
-        </div-->
-        <div class="action">
-            <button class="edit">edit</button>
-            <button class="delete"></button>
-        </div-->
-    </section>
-    </main>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <title>To Do App</title>
+  </head>
+  <body>
+    <div id="myDIV" class="header">
+      <h2 class="header-title">My To Do List</h2>
+      <div class="header-content">
+        <input type="text" id="myInput" placeholder="What's on your mind?" />
+        <span onclick="newElement()" class="addBtn">Add</span>
+      </div>
+    </div>
+    <div class="list-data">
+      <ul id="myUL">
+        <li>Hit the gym</li>
+        <li class="checked">Create To-Do List</li>
+        <li>Read a book</li>
+        <li>Organize office</li>
+      </ul>
+    </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
