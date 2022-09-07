@@ -1,53 +1,59 @@
-window.addEventListener('load',() => {
-    const form=document.querySelector("#new-task-form");
-    const input=document.querySelector("#new-task-input");
-    const list_e1=document.querySelector("#task");
-    form.addEventListener('submit',(e)=> {
-        e.preventDefault();
-        const task=input.value;
-        if(!task){
-            alert("please fill out the task");
-            return;
-        } 
-          const task_e1=document.createElement("div");
-          task_content_e1.classList.add("content");
-          task_content_e1.innerText=task;
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
 
-          task_e1.appendChild(task_content_e1);
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function () {
+    var div = this.parentElement;
+    div.style.display = "none";
+  };
+}
 
-          const task_input_e1= document.createElement("input");
-          task_input_e1.classList.add("task");
-          task_input_e1.type="text";
-          task_input_e1.value=task;
-          task_input_e1.setAttribute("readonly","readonly");
-          task_content_e1.appendChild(task_input_e1);
-          const  task_action_e1=document.createElement("div");
-          task_action_e1.innerHTML.add("actions");
-          const task_edit_e1=document.createElement("button");
-          task_delete_e1.classList.add("edit");
-          task_edit_e1.innerHTML="edit";
-          const task_delete_e1=document.createElement("button");
-          task_delete_e1.classList.add("delete");
-          task_delete_e1.innerHTML="delete";
-          task_action_e1.appendChild(task_edit_e1);
-          task_action_e1.appendChild(task_delete_e1);
-          
-          task_action_e1.appendChild(task_e1);
-          list_e1.appendChild(task_e1);
-          input.value="";
-          task_edit_e1.addEventListener('click',()=>{
-            if (task_edit_e1.innerText.toLowercase()=="edit"){
-                task_input_e1.removeAttribute("readonly");
-                task_input_e1.focus();
-                task_edit_e1.innerText="save";
-            } else {
-                task_input_e1.setAttribute("readonly","readonly");
-                task_edit_e1.innerText="edit";
-            }
-          });
-          task_delete_e1.addEventListener('click',() => {
-            list_e1.removeChild(task_e1);
-          })
-        
-    })
-});
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector("ul");
+list.addEventListener(
+  "click",
+  function (ev) {
+    if (ev.target.tagName === "LI") {
+      ev.target.classList.toggle("checked");
+    }
+  },
+  false
+);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === "") {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      div.style.display = "none";
+    };
+  }
+}
